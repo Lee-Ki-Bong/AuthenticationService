@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: './u.nestjs.Dockerfile'
+    stdin_open: true
+    tty: true
+    ports:
+      - '3000:3000'
+    volumes:
+      - './gateway:/home'
+
+  auth:
+    build:
+      context: .
+      dockerfile: './u.nestjs.Dockerfile'
+    stdin_open: true
+    tty: true
+    ports:
+      - '3001:3001'
+    volumes:
+      - './auth:/home'
+
+  account:
+    build:
+      context: .
+      dockerfile: './u.nestjs.Dockerfile'
+    stdin_open: true
+    tty: true
+    ports:
+      - '3002:3002'
+    volumes:
+      - './account:/home'
+
+  service_a:
+    build:
+      context: .
+      dockerfile: './u.nestjs.Dockerfile'
+    stdin_open: true
+    tty: true
+    ports:
+      - '3003:3003'
+    volumes:
+      - './serviceA:/home'
+
+  front:
+    build:
+      context: .
+      dockerfile: './u.nuxtjs.Dockerfile'
+    stdin_open: true
+    tty: true
+    ports:
+      - '3004:3004'
+    volumes:
+      - './front:/home'
